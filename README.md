@@ -1,3 +1,5 @@
+<h1>Project Overview</h1>
+
 This is our comp426 class final project.
 
 We created an web applications that enables people to share their code snippets. Features includes account signup, signin/signout, upload, saved, and removed favorite code snippets.
