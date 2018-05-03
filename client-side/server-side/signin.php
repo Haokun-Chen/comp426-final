@@ -28,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
       }else{
           //Login Successful
           header("Content-type: application/json");
-          setcookie("username", $user->getUsername(),time()+(3600), '/Courses/comp426-f17/users','wwwp.cs.unc.edu');
-          setcookie("userid", $user->getID(),time()+(3600), '/Courses/comp426-f17/users','wwwp.cs.unc.edu');
+          setcookie("username", $user->getUsername(),time()+(3600), '/');
+          setcookie("userid", $user->getID(),time()+(3600), '/');
           print($user->getJSON());
           exit();
       }
-    }    
+    }
   }
 }
 ?>

@@ -21,11 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       }
 
       $response=User::register($username,$password,$email);
-      
+
       if($response >=0){
         header("Content-type: application/json");
-        setcookie("username", $username, time()+(1800), '/Courses/comp426-f17/users','wwwp.cs.unc.edu');
-        setcookie("userid", $response, time()+(1800), '/Courses/comp426-f17/users','wwwp.cs.unc.edu');
+        setcookie("username", $username, time()+(1800), '/');
+        setcookie("userid", $response, time()+(1800), '/');
         print(json_encode($response));
         exit();
     }else{
