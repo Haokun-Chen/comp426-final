@@ -7,9 +7,9 @@ class User{
 	private $password;
 
 	public static function connect() {
-    	return new mysqli("classroom.cs.unc.edu", 
-		      	"chenhk", 
-				"123888LR", 
+    	return new mysqli("classroom.cs.unc.edu",
+		      	"chenhk",
+				"123888LR",
 		      	"chenhkdb");
     }
 
@@ -34,11 +34,11 @@ class User{
 
 			if($pass==md5($password)){
 				// Sign in Successful
-				return new User(intval($row['id']),$row['username'],$row['password'],$row['email']); 
+				return new User(intval($row['id']),$row['username'],$row['password'],$row['email']);
 			}
 			else{
 				return false; //password incorrect
-			}	
+			}
 		}
 	}
 
@@ -53,7 +53,7 @@ class User{
 
 	public static function register($username,$password,$email){
 		$mysqli=User::connect();
-		
+
 		$num_res1=$mysqli->query("SELECT * FROM final_User WHERE username='".$username."'");
 		$num_res2=$mysqli->query("SELECT * FROM final_User WHERE email='".$email."'");
 
@@ -75,7 +75,7 @@ class User{
 			return -2; //duplicate username
 		}else{
 			return -3; //Both username and email are duplicate
-		}	
+		}
 	}
 
 	public function getID(){

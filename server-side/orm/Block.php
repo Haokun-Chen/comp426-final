@@ -9,9 +9,9 @@ class Block{
 	private $code;
 
 	public static function connect() {
-    	return new mysqli("classroom.cs.unc.edu", 
-		      	"chenhk", 
-				"123888LR", 
+    	return new mysqli("classroom.cs.unc.edu",
+		      	"chenhk",
+				"123888LR",
 		      	"chenhkdb");
     }
 
@@ -28,7 +28,7 @@ class Block{
 		$mysqli=Block::connect();
 
 		$result= $mysqli->query("SELECT * FROM final_CodeBlock");
-		
+
 		$block_array = array();
 
 		if ($result) {
@@ -52,10 +52,10 @@ class Block{
 	public static function findSavedBlocks($user_id){
 		$mysqli=Block::connect();
 
-		$result= $mysqli->query("SELECT * FROM final_CodeBlock 
-			WHERE id IN 
+		$result= $mysqli->query("SELECT * FROM final_CodeBlock
+			WHERE id IN
 			(SELECT blockid FROM final_SavedBlock WHERE user_id = $user_id) ");
-		
+
 		$block_array = array();
 
 		if ($result) {
@@ -71,7 +71,7 @@ class Block{
 	      	$real_next_row = array('id' => $id, 'user_id'=> $user_id,'title' => $title,'language' => $language,'description' => $description, 'code' => $real_code);
 
 			$block_array[] = $real_next_row;
-			
+
 	      }
 	      return $block_array;
 	    }
@@ -81,7 +81,7 @@ class Block{
 		$mysqli=Block::connect();
 		$real_code = base64_encode($code);
 
-		$result=$mysqli->query("INSERT INTO final_CodeBlock (user_id,title,language,description,code) 
+		$result=$mysqli->query("INSERT INTO final_CodeBlock (user_id,title,language,description,code)
 			values ($user_id, '$title', '$language', '$description', '$real_code')"
 			);
 
@@ -95,7 +95,7 @@ class Block{
 	public static function saveBlock($user_id,$block_id){
 		$mysqli=Block::connect();
 
-		$result=$mysqli->query("INSERT INTO final_SavedBlock (user_id, blockid) 
+		$result=$mysqli->query("INSERT INTO final_SavedBlock (user_id, blockid)
 			values ($user_id, $block_id)");
 
 		if($result){
